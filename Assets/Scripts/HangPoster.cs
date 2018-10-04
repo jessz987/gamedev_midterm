@@ -37,15 +37,21 @@ public class HangPoster : MonoBehaviour {
 		
 		// if bool is true (from pressing E in trigger), poster goes up
 		// uiText is also updated, and player can no longer interact with the poster
-		if (CanHangPoster)
+		if (CanHangPoster && !PosterUp)
 		{
-			poster.gameObject.SetActive(true);
+			hangPoster(poster);
 			uiTextControlHint.gameObject.SetActive(false);
-			PosterUp = true;
 
 			
 			uiTextThought.text = "alright... next poster.";
 		}
+	}
+
+	void hangPoster(GameObject post)
+	{
+		post.gameObject.SetActive(true);
+		GameManager.numPostersLeft--;
+		PosterUp = true;
 	}
 	
 	void OnTriggerEnter(Collider coll)
@@ -66,7 +72,5 @@ public class HangPoster : MonoBehaviour {
 	{
 		CanHangPoster = false;
 		InPosterTrigger = false;
-		
-		GameManager.numPostersLeft--;
 	}
 }

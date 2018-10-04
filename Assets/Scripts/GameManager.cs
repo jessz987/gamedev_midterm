@@ -10,5 +10,7 @@ public class GameManager : MonoBehaviour
 	public static int numTotalPosters;
 
 	public static bool foodBowlPlaced;
-	
+
+	public static bool fadeToBlack;
+
 }
