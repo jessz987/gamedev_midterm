@@ -8,6 +8,8 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="ArrowDirection.cs" t="Include" />
+          <e p="ArrowEnabled.cs" t="Include" />
+          <e p="ArrowPlacebo.cs" t="Include" />
           <e p="CatScript.cs" t="Include" />
           <e p="FadeToBlack.cs" t="Include" />
           <e p="FoodBowl.cs" t="Include" />

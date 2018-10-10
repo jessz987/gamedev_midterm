@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class FoodBowl : MonoBehaviour
 {
 	private bool inBowlTrigger;
+
+	public GameObject bowl;
 	
 	public Text uiTextThought;
 	public Text uiTextControlHint;
@@ -17,18 +19,17 @@ public class FoodBowl : MonoBehaviour
 	void Start ()
 	{
 		GameManager.foodBowlPlaced = false;
-		mRender = GetComponent<MeshRenderer>();
 	}
 	
 	void Update () {
 		if (inBowlTrigger && Input.GetKey(KeyCode.E))
 		{
-			mRender.enabled = true;
+			bowl.gameObject.SetActive(true);
 			GameManager.foodBowlPlaced = true;
 			uiTextControlHint.gameObject.SetActive(false);
 
-			uiTextThought.text = "okay, now I can put up some lost cat posters. i have 20 posters to put up... " +
-			                     "i guess those grey poles are the best place to put them.";
+			uiTextThought.text = "okay, now I can put up some lost cat posters. i have 10 posters to put up... " +
+			                     "the grey poles downstairs seem like the best place to put them.";
 			
 			uiTextPosterCount.gameObject.SetActive(true);
 		}

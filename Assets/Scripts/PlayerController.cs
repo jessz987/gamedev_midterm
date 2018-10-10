@@ -11,7 +11,10 @@ public class PlayerController : MonoBehaviour
 	
 	public Text uiTextNumPosters;
 	public Text uiTextThought;
-	public Text uiTextControlHint;
+
+	public GameObject blackScreen;
+
+	public GameObject spawnPointDownstairs;
 	
 	
 	// this variable will remember input and pass it to physics
@@ -19,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
 	void Start()
 	{
-		GameManager.numTotalPosters = 20;
+		GameManager.numTotalPosters = 10;
 		GameManager.numPostersLeft = GameManager.numTotalPosters;
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
@@ -34,7 +37,7 @@ public class PlayerController : MonoBehaviour
 		float mouseX = Input.GetAxis("Mouse X"); // horizontal mouse input
 		float mouseY = Input.GetAxis("Mouse Y"); //  vertical mouse input
 		
-		// rotating the camera based on the above mouse input
+		// rotating the camera based on the above mouse input 
 		transform.Rotate(0f, mouseX * 2, 0f); 
 		Camera.main.transform.Rotate(-mouseY * 2, 0f, 0f);
 		
@@ -46,6 +49,12 @@ public class PlayerController : MonoBehaviour
 		inputVector += transform.right * horizontal; // strafe
 		
 		// ENDING
+
+		if (GameManager.monthLater && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)))
+		{
+			blackScreen.gameObject.SetActive(false);
+		}
+		
 		// cheat code: P to skip to all 20 posters up
 		if (Input.GetKey(KeyCode.P))
 		{
@@ -55,11 +64,15 @@ public class PlayerController : MonoBehaviour
 			{
 				uiTextThought.text = "okay they're all up... i guess all i can do is go back home for now...";
 				uiTextNumPosters.gameObject.SetActive(false);
-				uiTextControlHint.gameObject.SetActive(false);
+				GameManager.fadeToBlack = true;
 			}
 		}
 		
-		
+		// cheat code: spawn to downstairs
+		if (Input.GetKey(KeyCode.O))
+		{
+			transform.position = spawnPointDownstairs.transform.position;
+		}
 	}
 	
 	void FixedUpdate()

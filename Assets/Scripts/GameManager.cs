@@ -13,4 +13,8 @@ public class GameManager : MonoBehaviour
 
 	public static bool fadeToBlack;
 
+	public static bool arrowEnabled;
+
+	public static bool monthLater;
+
 }
