@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour
 		float mouseY = Input.GetAxis("Mouse Y"); //  vertical mouse input
 		
 		// rotating the camera based on the above mouse input 
-		transform.Rotate(0f, mouseX * 2, 0f); 
-		Camera.main.transform.Rotate(-mouseY * 2, 0f, 0f);
+		transform.Rotate(0f, mouseX, 0f); 
+		Camera.main.transform.Rotate(-mouseY, 0f, 0f);
 		
 		// WASD movement
 		float horizontal = Input.GetAxis("Horizontal"); // A/D, left/right
