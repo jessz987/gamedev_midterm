@@ -14,6 +14,12 @@ public class CatScript : MonoBehaviour {
 	public GameObject spotlight;
 
 	private bool canHug;
+
+	private float timer = 2f;
+	public float totalTimeToBlack = 2f;
+	private bool timerCanStart = false;
+
+	public GameObject BlackScreen;
 	
 	
 	void Update () {
@@ -26,8 +32,27 @@ public class CatScript : MonoBehaviour {
 		{
 			spotlight.gameObject.SetActive(true);
 			uiTextControlHint.gameObject.SetActive(false);
+
+			timer = totalTimeToBlack;
+			timerCanStart = true;
+			Debug.Log("timer set");
+		}
+
+		if (timer > 0 && timerCanStart)
+		{
+			timer -= Time.deltaTime;
+			Debug.Log("timer counting down: " + timer.ToString());
+		}
+
+		if (timer <= 0 && timerCanStart)
+		{
+			BlackScreen.gameObject.SetActive(true);
+			uiTextControlHint.gameObject.SetActive(true);
+			uiTextControlHint.text = "THE END";
+			uiTextThought.gameObject.SetActive(false);
 		}
 	}
+	
 
 	private void OnTriggerEnter(Collider other)
 	{

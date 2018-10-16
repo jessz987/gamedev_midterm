@@ -8,6 +8,9 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
 	public float moveSpeed = 10f;
+	public float lookSpeed = 100f;
+
+	private float verticalLook = 0f;
 	
 	public Text uiTextNumPosters;
 	public Text uiTextThought;
@@ -34,12 +37,21 @@ public class PlayerController : MonoBehaviour
 		uiTextNumPosters.text = "posters left: " + GameManager.numPostersLeft.ToString();
 		
 		// MOUSE look: getting mouse input
-		float mouseX = Input.GetAxis("Mouse X"); // horizontal mouse input
-		float mouseY = Input.GetAxis("Mouse Y"); //  vertical mouse input
+		float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * lookSpeed; // horizontal mouse movement
+		float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * lookSpeed; // vertical mouse movement
 		
-		// rotating the camera based on the above mouse input 
 		transform.Rotate(0f, mouseX, 0f); 
-		Camera.main.transform.Rotate(-mouseY, 0f, 0f);
+		
+		verticalLook += -mouseY;
+		verticalLook = Mathf.Clamp(verticalLook, -80f, 80f);
+		Camera.main.transform.localEulerAngles = new Vector3(verticalLook, 0f, 0f);
+		
+		// CURSOR LOCK
+		if (Input.GetMouseButtonDown(0)) // 0 = left-click
+		{
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false; 
+		}
 		
 		// WASD movement
 		float horizontal = Input.GetAxis("Horizontal"); // A/D, left/right
@@ -55,7 +67,7 @@ public class PlayerController : MonoBehaviour
 			blackScreen.gameObject.SetActive(false);
 		}
 		
-		// cheat code: P to skip to all 20 posters up
+		// CHEAT code: P to skip to all 20 posters up
 		if (Input.GetKey(KeyCode.P))
 		{
 			GameManager.numPostersLeft = 0;
@@ -68,7 +80,7 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 		
-		// cheat code: spawn to downstairs
+		// CHEAT code: O to teleport downstairs
 		if (Input.GetKey(KeyCode.O))
 		{
 			transform.position = spawnPointDownstairs.transform.position;
