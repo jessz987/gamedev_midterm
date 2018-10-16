@@ -71,13 +71,14 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey(KeyCode.P))
 		{
 			GameManager.numPostersLeft = 0;
-			// once all posters all up, end game:
-			if (GameManager.numPostersLeft <= 0)
-			{
-				uiTextThought.text = "okay they're all up... i guess all i can do is go back home for now...";
-				uiTextNumPosters.gameObject.SetActive(false);
-				GameManager.fadeToBlack = true;
-			}
+		}
+		
+		// once all posters all up, end game:
+		if (GameManager.numPostersLeft <= 0 && !GameManager.fadeToBlack)
+		{
+			uiTextThought.text = "okay they're all up... i guess all i can do is go back home for now...";
+			uiTextNumPosters.gameObject.SetActive(false);
+			GameManager.fadeToBlack = true;
 		}
 		
 		// CHEAT code: O to teleport downstairs

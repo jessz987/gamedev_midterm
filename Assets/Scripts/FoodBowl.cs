@@ -9,6 +9,8 @@ public class FoodBowl : MonoBehaviour
 	private bool inBowlTrigger;
 
 	public GameObject bowl;
+
+	public GameObject fenceWall;
 	
 	public Text uiTextThought;
 	public Text uiTextControlHint;
@@ -27,6 +29,7 @@ public class FoodBowl : MonoBehaviour
 			bowl.gameObject.SetActive(true);
 			GameManager.foodBowlPlaced = true;
 			uiTextControlHint.gameObject.SetActive(false);
+			fenceWall.gameObject.SetActive(false);
 
 			uiTextThought.text = "okay, now I can put up some lost cat posters. i have 10 posters to put up... " +
 			                     "the grey poles downstairs seem like the best place to put them.";

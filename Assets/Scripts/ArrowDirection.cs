@@ -51,5 +51,10 @@ public class ArrowDirection : MonoBehaviour
 			meshrenderer.enabled = false;
 			//arrow.gameObject.SetActive(false);
 		}
+
+		if (GameManager.fadeToBlack)
+		{
+			meshrenderer.enabled = false;
+		}
 	}
 }
