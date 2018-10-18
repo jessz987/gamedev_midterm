@@ -16,6 +16,9 @@
           <e p="GameManager.cs" t="Include" />
           <e p="HangPoster.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
+          <e p="StartScene" t="Include">
+            <e p="UITextController.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="GameDev_Midterm.sln" t="IncludeFlat" />

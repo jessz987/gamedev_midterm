@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b8a5dbda26b531543bea06200840a61c
+guid: daaac1c6284f3e942bcce44213aacac7
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,11 +8,10 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Quicksand
+  fontName: Mayeka Thin Demo
   fontNames:
-  - Quicksand
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 95f3a915afb11a546ae7b8c387ac4441, type: 3}
+  - Mayeka Thin Demo
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
